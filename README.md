@@ -57,7 +57,7 @@ import (
 func main() {
 	scheduler := schedulerext.NewTaskScheduler()
 
-	task := &pkg.Task{
+	task := &schedulerext.Task{
 		Interval: "1s",     // Execute every 1 second
 		RunOnce:  false,    // Recurring task
 		FirstRun: true,     // Execute immediately upon scheduling
@@ -93,7 +93,7 @@ import (
 )
 
 func main() {
-	scheduler := pkg.NewTaskScheduler()
+	scheduler := schedulerext.NewTaskScheduler()
 
 	cronTask := &schedulerext.Task{
 		Interval: "* * * * * *", // Cron expression: every second
