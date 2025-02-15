@@ -24,10 +24,10 @@ The Go Scheduler package provides a flexible and lightweight task scheduling mec
 
 ## Installation
 
-Install the package using `go get`. Replace `github.com/yourusername/schedulerext` with your actual module path.
+Install the package using `go get`. Replace `github.com/raykavin/schedulerext` with your actual module path.
 
 ```bash
-go get github.com/yourusername/schedulerext
+go get github.com/raykavin/schedulerext
 ```
 
 ## Usage
@@ -35,7 +35,7 @@ go get github.com/yourusername/schedulerext
 Import the package into your project:
 
 ```go
-import "github.com/yourusername/schedulerext/pkg"
+import "github.com/raykavin/schedulerext"
 ```
 
 ## Scheduling a Simple Task
@@ -51,11 +51,11 @@ import (
 	"log"
 	"time"
 
-	"github.com/yourusername/schedulerext/pkg"
+	"github.com/raykavin/schedulerext"
 )
 
 func main() {
-	scheduler := pkg.NewTaskScheduler()
+	scheduler := schedulerext.NewTaskScheduler()
 
 	task := &pkg.Task{
 		Interval: "1s",     // Execute every 1 second
@@ -89,13 +89,13 @@ import (
 	"log"
 	"time"
 
-	"github.com/yourusername/schedulerext/pkg"
+	"github.com/raykavin/schedulerext"
 )
 
 func main() {
 	scheduler := pkg.NewTaskScheduler()
 
-	cronTask := &pkg.Task{
+	cronTask := &schedulerext.Task{
 		Interval: "* * * * * *", // Cron expression: every second
 		RunOnce:  false,         // Recurring task
 		FirstRun: true,          // Execute immediately upon scheduling
@@ -126,13 +126,13 @@ import (
 	"log"
 	"time"
 
-	"github.com/yourusername/schedulerext/pkg"
+	"github.com/raykavin/schedulerext"
 )
 
 func main() {
-	scheduler := pkg.NewTaskScheduler()
+	scheduler := schedulerext.NewTaskScheduler()
 
-	delayedTask := &pkg.Task{
+	delayedTask := &schedulerext.Task{
 		Interval:   "2s",                           // Task repeats every 2 seconds
 		RunOnce:    false,                          // Recurring task
 		FirstRun:   false,                          // Do not run immediately
@@ -164,13 +164,13 @@ import (
 	"log"
 	"time"
 
-	"github.com/yourusername/schedulerext/pkg"
+	"github.com/raykavin/schedulerext"
 )
 
 func main() {
-	scheduler := pkg.NewTaskScheduler()
+	scheduler := schdulerext.NewTaskScheduler()
 
-	errorTask := &pkg.Task{
+	errorTask := &schedulerext.Task{
 		Interval: "1s",    // Execute every 1 second
 		RunOnce:  true,    // Run only once
 		FirstRun: true,    // Execute immediately
