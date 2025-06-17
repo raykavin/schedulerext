@@ -1,4 +1,4 @@
-module github.com/raykavin/schedulerext
+module github.com/raykavin/goschd
 
 go 1.23.2
 
