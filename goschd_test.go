@@ -1,4 +1,4 @@
-package schedulerext
+package goschd
 
 import (
 	"context"
