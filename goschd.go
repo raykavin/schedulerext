@@ -1,7 +1,7 @@
-// Package schedulerext provides a flexible task scheduler with support for cron expressions,
+// Package goschd provides a flexible task scheduler with support for cron expressions,
 // intervals, and various execution modes. It allows scheduling tasks with different timing
 // strategies including one-time execution, recurring intervals, and cron-based scheduling.
-package schedulerext
+package goschd
 
 import (
 	"context"
