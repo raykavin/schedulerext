@@ -1,4 +1,7 @@
 # Go Scheduler Package
+[![Go Reference](https://pkg.go.dev/badge/github.com/raykavin/goschd.svg)](https://pkg.go.dev/github.com/raykavin/goschd)
+[![Go Report Card](https://goreportcard.com/badge/github.com/raykavin/goschd)](https://goreportcard.com/report/github.com/raykavin/goschd)
+[![License](https://img.shields.io/badge/license-GPL-blue.svg)](LICENSE)
 
 The Go Scheduler package provides a flexible and lightweight task scheduling mechanism for Go applications. You can schedule tasks to run periodically using either duration strings or cron expressions. It supports delayed starts, one-time execution, single-instance execution, and custom error handling.
 
@@ -24,10 +27,10 @@ The Go Scheduler package provides a flexible and lightweight task scheduling mec
 
 ## Installation
 
-Install the package using `go get`. Replace `github.com/raykavin/schedulerext` with your actual module path.
+Install the package using `go get`. Replace `github.com/raykavin/goschd` with your actual module path.
 
 ```bash
-go get github.com/raykavin/schedulerext
+go get github.com/raykavin/goschd
 ```
 
 ## Usage
@@ -35,7 +38,7 @@ go get github.com/raykavin/schedulerext
 Import the package into your project:
 
 ```go
-import "github.com/raykavin/schedulerext"
+import "github.com/raykavin/goschd"
 ```
 
 ## Scheduling a Simple Task
@@ -51,13 +54,13 @@ import (
 	"log"
 	"time"
 
-	"github.com/raykavin/schedulerext"
+	"github.com/raykavin/goschd"
 )
 
 func main() {
-	scheduler := schedulerext.NewTaskScheduler()
+	scheduler := goschd.NewTaskScheduler()
 
-	task := &schedulerext.Task{
+	task := &goschd.Task{
 		Interval: "1s",     // Execute every 1 second
 		RunOnce:  false,    // Recurring task
 		FirstRun: true,     // Execute immediately upon scheduling
@@ -89,13 +92,13 @@ import (
 	"log"
 	"time"
 
-	"github.com/raykavin/schedulerext"
+	"github.com/raykavin/goschd"
 )
 
 func main() {
-	scheduler := schedulerext.NewTaskScheduler()
+	scheduler := goschd.NewTaskScheduler()
 
-	cronTask := &schedulerext.Task{
+	cronTask := &goschd.Task{
 		Interval: "* * * * * *", // Cron expression: every second
 		RunOnce:  false,         // Recurring task
 		FirstRun: true,          // Execute immediately upon scheduling
@@ -126,13 +129,13 @@ import (
 	"log"
 	"time"
 
-	"github.com/raykavin/schedulerext"
+	"github.com/raykavin/goschd"
 )
 
 func main() {
-	scheduler := schedulerext.NewTaskScheduler()
+	scheduler := goschd.NewTaskScheduler()
 
-	delayedTask := &schedulerext.Task{
+	delayedTask := &goschd.Task{
 		Interval:   "2s",                           // Task repeats every 2 seconds
 		RunOnce:    false,                          // Recurring task
 		FirstRun:   false,                          // Do not run immediately
@@ -164,13 +167,13 @@ import (
 	"log"
 	"time"
 
-	"github.com/raykavin/schedulerext"
+	"github.com/raykavin/goschd"
 )
 
 func main() {
 	scheduler := schdulerext.NewTaskScheduler()
 
-	errorTask := &schedulerext.Task{
+	errorTask := &goschd.Task{
 		Interval: "1s",    // Execute every 1 second
 		RunOnce:  true,    // Run only once
 		FirstRun: true,    // Execute immediately
@@ -198,11 +201,29 @@ The package includes a suite of tests covering task scheduling, error handling, 
 go test -v
 ```
 
-## Contributing
+## 🤝 Contributing
 
-Contributions are welcome! Feel free to open issues or submit pull requests.
+Contributions to GoSchd are welcome! Here are some ways you can help improve the project:
 
+- **Report bugs and suggest features** by opening issues on GitHub
+- **Submit pull requests** with bug fixes or new features
+- **Improve documentation** to help other users and developers
+- **Share your custom strategies** with the community
 
-## License
+## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/raykavin/schedulerext/blob/main/LICENSE.md) file for details.
+GoSchd is distributed under the **GNU General Public License v3.0**.  
+For complete license terms and conditions, see the [LICENSE](LICENSE.md) file in the repository.
+
+Copyright © [Raykavin Meireles](https://github.com/raykavin)
+
+---
+
+## 📬 Contact
+
+For support, collaboration, or questions about GoSchd:
+
+**Email**: [raykavin.meireles@gmail.com](mailto:raykavin.meireles@gmail.com)  
+**GitHub**: [@raykavin](https://github.com/raykavin)  
+**LinkedIn**: [@raykavin.dev](https://www.linkedin.com/in/raykavin-dev)  
+**Instagram**: [@raykavin.dev](https://www.instagram.com/raykavin.dev)
