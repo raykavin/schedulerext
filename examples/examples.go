@@ -6,17 +6,17 @@ import (
 	"log"
 	"time"
 
-	"github.com/raykavin/schedulerext"
+	"github.com/raykavin/goschd"
 )
 
 func main() {
 	// Create a new scheduler.
-	scheduler := schedulerext.NewTaskScheduler()
+	scheduler := goschd.NewTaskScheduler()
 
 	// ------------------------------
 	// Example 1: Simple Recurring Task
 	// ------------------------------
-	simpleTask := &schedulerext.Task{
+	simpleTask := &goschd.Task{
 		Interval: "2s",  // run every 2 seconds
 		RunOnce:  false, // repeat the task
 		FirstRun: true,  // execute immediately upon scheduling
@@ -32,7 +32,7 @@ func main() {
 	// ------------------------------
 	// Example 2: Cron Task
 	// ------------------------------
-	cronTask := &schedulerext.Task{
+	cronTask := &goschd.Task{
 		Interval: "*/5 * * * * *", // using a cron expression: fires every 5 seconds (with seconds field)
 		RunOnce:  false,           // repeat the task
 		FirstRun: true,            // execute immediately upon scheduling
@@ -48,7 +48,7 @@ func main() {
 	// ------------------------------
 	// Example 3: Error Handling Task
 	// ------------------------------
-	errorTask := &schedulerext.Task{
+	errorTask := &goschd.Task{
 		Interval: "3s",  // run every 3 seconds
 		RunOnce:  false, // repeat the task
 		FirstRun: true,  // execute immediately upon scheduling
@@ -67,7 +67,7 @@ func main() {
 	// ------------------------------
 	// Example 4: Delayed Start Task
 	// ------------------------------
-	delayedTask := &schedulerext.Task{
+	delayedTask := &goschd.Task{
 		Interval:   "4s",                             // repeat every 4 seconds
 		RunOnce:    false,                            // repeat the task
 		FirstRun:   false,                            // do not run immediately
