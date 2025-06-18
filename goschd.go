@@ -17,13 +17,13 @@ import (
 var (
 	// ErrTaskIDInUse is returned when attempting to add a task with an ID that already exists.
 	ErrTaskIDInUse = errors.New("task id already in use")
-	
+
 	// ErrTaskFuncNil is returned when a task is created without a function to execute.
 	ErrTaskFuncNil = errors.New("task function cannot be nil")
-	
+
 	// ErrTaskInterval is returned when a task is created without a valid interval.
 	ErrTaskInterval = errors.New("task interval must be definied")
-	
+
 	// ErrTaskNotFound is returned when attempting to lookup a task that doesn't exist.
 	ErrTaskNotFound = errors.New("could not find task within the task list")
 )
@@ -43,42 +43,42 @@ func (ctx TaskContext) ID() string { return ctx.id }
 // and cron-based scheduling.
 type Task struct {
 	sync.RWMutex // Managing concurrent modifications to task properties.
-	
+
 	// TaskContext provides contextual information and ID for the task.
 	TaskContext TaskContext
-	
+
 	// Interval specifies when the task should run. Can be a duration string (e.g., "5s", "1m")
 	// or a cron expression (e.g., "0 0 * * *" for daily at midnight).
 	Interval string
-	
+
 	// RunOnce indicates if the task should run only once and then be removed from the scheduler.
 	RunOnce bool
-	
+
 	// FirstRun indicates if the task should run immediately upon being scheduled.
 	FirstRun bool
-	
+
 	// RunSingleInstance prevents concurrent instances of the task from running.
 	// If true, a new execution will be skipped if the previous one is still running.
 	RunSingleInstance bool
-	
+
 	// StartAfter specifies the earliest time when the task should start executing.
 	// The task will not run before this time.
 	StartAfter time.Time
-	
+
 	// TaskFunc is the main function to execute. It receives a context for cancellation.
 	// Either TaskFunc or FuncWithTaskContext must be provided.
 	TaskFunc func(ctx context.Context) error
-	
+
 	// ErrFunc is called when TaskFunc returns an error.
 	ErrFunc func(error)
-	
+
 	// FuncWithTaskContext is an alternative to TaskFunc that receives TaskContext instead of context.Context.
 	// Either TaskFunc or FuncWithTaskContext must be provided.
 	FuncWithTaskContext func(TaskContext) error
-	
+
 	// ErrFuncWithTaskContext is called when FuncWithTaskContext returns an error.
 	ErrFuncWithTaskContext func(TaskContext, error)
-	
+
 	// Private fields for internal state management
 	id       string             // Unique identifier for the task.
 	running  sync.Mutex         // Mutex to manage task's running state.
@@ -126,7 +126,7 @@ func (t *Task) safeOps(fn func()) {
 // Scheduler manages a collection of scheduled tasks. It provides thread-safe
 // operations for adding, removing, and looking up tasks by their unique identifiers.
 type Scheduler struct {
-	sync.RWMutex              // RWMutex for managing concurrent access to tasks.
+	sync.RWMutex                  // RWMutex for managing concurrent access to tasks.
 	tasks        map[string]*Task // Map of scheduled tasks, keyed by their unique ID.
 }
 
@@ -145,14 +145,15 @@ func NewTaskScheduler() *Scheduler {
 // Returns an error if the ID is already in use or if the task configuration is invalid.
 //
 // Example:
-//   task := &Task{
-//       Interval: "5s",
-//       TaskFunc: func(ctx context.Context) error {
-//           fmt.Println("Task executed")
-//           return nil
-//       },
-//   }
-//   err := scheduler.Add("my-task", task)
+//
+//	task := &Task{
+//	    Interval: "5s",
+//	    TaskFunc: func(ctx context.Context) error {
+//	        fmt.Println("Task executed")
+//	        return nil
+//	    },
+//	}
+//	err := scheduler.Add("my-task", task)
 func (s *Scheduler) Add(id string, task *Task) error {
 	log.Printf("Adding task id %s to scheduler manager...\n", id)
 

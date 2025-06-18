@@ -297,7 +297,7 @@ func TestClone(t *testing.T) {
 	if clone == original {
 		t.Fatal("clone should not be the same pointer as original")
 	}
-	
+
 	if clone.Interval != original.Interval ||
 		clone.RunOnce != original.RunOnce ||
 		clone.RunSingleInstance != original.RunSingleInstance ||
